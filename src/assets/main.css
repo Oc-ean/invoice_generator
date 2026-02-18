@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-200 dark:border-ink-800;
+  }
+  body {
+    @apply bg-ink-50 dark:bg-ink-950 text-ink-900 dark:text-ink-100 font-body antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-white/80 dark:bg-ink-900/80 backdrop-blur-sm border border-ink-200/60 dark:border-ink-700/60 rounded-2xl shadow-glass;
+  }
+
+  /* Branded button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 active:bg-brand-800
+           text-white font-display font-semibold text-sm rounded-xl
+           transition-all duration-200 shadow-glow-sm hover:shadow-glow
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-ink-100 hover:bg-ink-200 dark:bg-ink-800 dark:hover:bg-ink-700
+           text-ink-700 dark:text-ink-300 font-display font-semibold text-sm rounded-xl
+           border border-ink-200 dark:border-ink-700 transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-ink-600 dark:text-ink-400
+           hover:text-ink-900 dark:hover:text-ink-100 hover:bg-ink-100 dark:hover:bg-ink-800
+           font-medium text-sm rounded-xl transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-rose-500 hover:bg-rose-600
+           text-white font-display font-semibold text-sm rounded-xl transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Form inputs */
+  .input {
+    @apply w-full px-4 py-2.5 bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-700
+           rounded-xl text-ink-900 dark:text-ink-100 placeholder-ink-400
+           focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500
+           transition-all duration-200 font-body text-sm;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-ink-700 dark:text-ink-300 mb-1.5;
+  }
+
+  /* Status badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-lg text-xs font-semibold font-mono uppercase tracking-wide;
+  }
+  .badge-paid {
+    @apply badge bg-emerald-400/15 text-emerald-600 dark:text-emerald-400;
+  }
+  .badge-unpaid {
+    @apply badge bg-amber-400/15 text-amber-600 dark:text-amber-400;
+  }
+  .badge-overdue {
+    @apply badge bg-rose-400/15 text-rose-600 dark:text-rose-400;
+  }
+  .badge-draft {
+    @apply badge bg-ink-400/15 text-ink-600 dark:text-ink-400;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply glass-card p-5 flex flex-col gap-1;
+  }
+}
+
+@layer utilities {
+  .animate-stagger > * {
+    @apply animate-slide-up;
+  }
+  .animate-stagger > *:nth-child(1) { animation-delay: 0ms; }
+  .animate-stagger > *:nth-child(2) { animation-delay: 80ms; }
+  .animate-stagger > *:nth-child(3) { animation-delay: 160ms; }
+  .animate-stagger > *:nth-child(4) { animation-delay: 240ms; }
+  .animate-stagger > *:nth-child(5) { animation-delay: 320ms; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { @apply bg-transparent; }
+::-webkit-scrollbar-thumb { @apply bg-ink-300 dark:bg-ink-700 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-ink-400 dark:bg-ink-600; }
