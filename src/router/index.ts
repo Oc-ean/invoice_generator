@@ -1,23 +1,59 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { useAuthStore } from '@/stores/auth'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: '/login',
+      name: 'Login',
+      component: () => import('@/views/auth/LoginView.vue'),
+      meta: { public: true },
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/register',
+      name: 'Register',
+      component: () => import('@/views/auth/RegisterView.vue'),
+      meta: { public: true },
     },
+
+     {
+      path: '/',
+      component: () => import('@/components/layouts/AppLayout.vue'),
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: '',
+          name: 'Dashboard',
+          component: () => import('@/views/DashboardView.vue'),
+        },
+      ],
+    },
+        { path: '/:pathMatch(.*)*', redirect: '/' },
+
   ],
+  scrollBehavior() {
+    return { top: 0 }
+  },
+})
+
+router.beforeEach(async (to) => {
+  const auth = useAuthStore()
+
+  if (auth.loading) {
+    await new Promise<void>(resolve => {
+      const unwatch = setInterval(() => {
+        if (!auth.loading) { clearInterval(unwatch); resolve() }
+      }, 50)
+    })
+  }
+
+  if (to.meta.requiresAuth && !auth.isAuthenticated) {
+    return { name: 'Login', query: { redirect: to.fullPath } }
+  }
+  if (to.meta.public && auth.isAuthenticated) {
+    return { name: 'Dashboard' }
+  }
 })
 
 export default router
