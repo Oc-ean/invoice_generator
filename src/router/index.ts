@@ -27,6 +27,28 @@ const router = createRouter({
           name: 'Dashboard',
           component: () => import('@/views/DashboardView.vue'),
         },
+        
+        {
+          path: 'clients',
+          name: 'Clients',
+          component: () => import('@/views/ClientsView.vue'),
+        },
+        {
+          path: 'invoices',
+          name: 'Invoices',
+          component: () => import('@/views/InvoicesView.vue'),
+        },
+
+          {
+          path: 'invoices/new',
+          name: 'NewInvoice',
+          component: () => import('@/views/CreateInvoiceView.vue'),
+        },
+         {
+          path: 'settings',
+          name: 'Settings',
+          component: () => import('@/views/SettingsView.vue'),
+        },
       ],
     },
         { path: '/:pathMatch(.*)*', redirect: '/' },
@@ -47,6 +69,8 @@ router.beforeEach(async (to) => {
       }, 50)
     })
   }
+
+  
 
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
     return { name: 'Login', query: { redirect: to.fullPath } }

@@ -34,8 +34,8 @@ const isActive = computed(() => {
             ? 'text-brand-600 dark:text-brand-400'
             : 'text-ink-400 group-hover:text-ink-600 dark:group-hover:text-ink-300'">
             <HomeIcon v-if="icon === 'dashboard'" />
-            <DocumentTextIcon v-else-if="icon === 'invoice'" />
             <UsersIcon v-else-if="icon === 'clients'" />
+            <DocumentTextIcon v-else-if="icon === 'invoice'" />
             <Cog6ToothIcon v-else-if="icon === 'settings'" />
         </span>
 
