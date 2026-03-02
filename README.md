@@ -1,10 +1,104 @@
-# invoice_generator
+# 🚀 Simple Invoice Generator – Micro SaaS
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern, responsive Micro SaaS Invoice Generator built with Vue 3, TypeScript, Tailwind CSS, and Supabase.
 
-## Recommended IDE Setup
+Freelancers hate creating invoices manually.
+This app makes it simple to create, calculate, manage, and download professional invoices in seconds.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Inspired by tools like FreshBooks, but simplified and lightweight.
+
+# 🛠 Tech Stack
+🎨 Frontend
+
+Vue 3 (Composition API)
+
+TypeScript
+
+Vue Router
+
+Pinia (State Management)
+
+Tailwind CSS
+
+Light & Dark Mode
+
+Fully Responsive Design
+
+PDF Generation (jsPDF / html2pdf)
+
+# 🗄 Backend
+
+Supabase (Authentication + Database)
+
+PostgreSQL (managed by Supabase)
+
+# ✨ Features
+👤 Client Management
+
+Add new clients
+
+Edit & delete clients
+
+Save client history
+
+🧾 Invoice Creation
+
+Select client
+
+Add dynamic invoice items
+
+Auto-calculate:
+
+Item total
+
+Subtotal
+
+Tax
+
+Grand total
+
+Mark invoice as Paid / Unpaid
+
+📄 PDF Download
+
+Generate professional invoice layout
+
+Download as PDF instantly
+
+No backend PDF processing required
+
+📊 Dashboard
+
+Total invoices
+
+Total revenue
+
+Unpaid amount summary
+
+Recent invoices overview
+
+# 🌓 UI/UX
+
+Clean SaaS-style layout
+
+Light / Dark mode toggle
+
+Modern color palette
+
+Mobile responsive
+
+Component-based architecture
+
+
+### 📷 **ScreenShots**
+
+<img src="screenshots/login.png" width="500"/>   <img src="screenshots/register.png" width="500"/> 
+
+<img src="screenshots/dashboard.png" width="500"/>   <img src="screenshots/clients.png" width="500"/> 
+
+<img src="screenshots/add_clients.png" width="500"/>    <img src="screenshots/invoice.png" width="500"/> 
+
+<img src="screenshots/add_invoice.png" width="500"/>    <img src="screenshots/settings.png" width="500"/> 
 
 ## Recommended Browser Setup
 
